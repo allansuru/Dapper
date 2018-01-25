@@ -49,13 +49,17 @@ namespace DapperSample.Models.Repository
                 {
                     result = sqlConnection.Query<Supplier>("SELECT * FROM Suppliers WHERE SupplierID IN (" + separaIds[0] + ")");
                 }
-                if (separaIds.Length == 2)
+                else if (separaIds.Length == 2)
                 {
                     result  = sqlConnection.Query<Supplier>("SELECT * FROM Suppliers WHERE SupplierID IN (" + separaIds[0] + ", " + separaIds[1]  + ")");
                 }
-                if(separaIds.Length == 3)
+                else if(separaIds.Length == 3)
                 {
                     result = sqlConnection.Query<Supplier>("SELECT * FROM Suppliers WHERE SupplierID IN (" + separaIds[0] + ", " + separaIds[1] + ", " + separaIds[2] + ")");
+                }
+                else if (separaIds.Length == 4)
+                {
+                    result = sqlConnection.Query<Supplier>("SELECT * FROM Suppliers WHERE SupplierID IN (" + separaIds[0] + ", " + separaIds[1] + ", " + separaIds[2] + ", "+ separaIds[3] +") ");
                 }
 
                 foreach (Supplier sup in result)
