@@ -34,7 +34,7 @@ namespace DapperSample.Models.Repository
                 if (model.IdFavorites == 0)
                     sqlConnection.Execute("INSERT INTO Favorites(ID_User, ID_Component, CreateFavorite, EhFavorito) VALUES (@ID_User, @ID_Component, @CreateFavorite, @EhFavorito)", model);
                 else
-                    sqlConnection.Execute(@"UPDATE Favorites SET EhFavorito = @EhFavorito WHERE IDFavorites = @IDFavorites", model);
+                    sqlConnection.Execute(@"UPDATE Favorites SET EhFavorito = @EhFavorito WHERE IDFavorites = @IDFavorites AND ID_User = @ID_User", model);
             }
         }
     }

@@ -23,6 +23,7 @@ namespace DapperSample.Controllers
         [HttpPost]
         public IHttpActionResult Save(Favorites model)
         {
+            model.CreateFavorite = DateTime.Now;
             this.Repository.Save(model);
             return Ok();
         }
