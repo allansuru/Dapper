@@ -31,11 +31,11 @@ namespace DapperSample.Models.Repository
         {
             using (var sqlConnection = new SqlConnection(ConnectionString))
             {
-                sqlConnection.Execute("INSERT INTO Favorites(ID_User, ID_Component, CreateFavorite, EhFavorito) VALUES (@ID_User, @ID_Component, @CreateFavorite, @EhFavorito)", model);
+                if (model.IdFavorites == 0)
+                    sqlConnection.Execute("INSERT INTO Favorites(ID_User, ID_Component, CreateFavorite, EhFavorito) VALUES (@ID_User, @ID_Component, @CreateFavorite, @EhFavorito)", model);
+                else
+                    sqlConnection.Execute(@"UPDATE Favorites SET EhFavorito = @EhFavorito WHERE IDFavorites = @IDFavorites", model);
             }
         }
-
-
-
     }
 }
